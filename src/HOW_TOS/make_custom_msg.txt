@@ -1,0 +1,25 @@
+1) Make sure message isn't in std_msgs or common_msgs
+2) Make msg direction
+  - mkdir msg
+3) Make message (ex.msg) and put data in
+4) Add to package.xml
+  - <build_depend>message_generation</build_depend>
+  - <run_depend>message_runtime</run_depend>
+5) Add/Uncomment in CMakeLists.txt
+  - find_package (catkin REQUIRED COMPONENTS
+      message_generation
+    )
+  - catkin_package(
+      CATKIN_DEPENDS message_runtime
+    )
+  - add_message_files(
+      FILES
+      ex.msg
+    )
+  - generate_messages(
+      DEPENDENCIES
+      std_msgs
+    )
+6) cd ~/racecar-ws
+7) catkin_make
+

@@ -1,0 +1,31 @@
+1) Run teleop on racecar
+2) Start rosbag
+    - rosbag record -O /data/racecar/data.bag /scan /tf
+    - record laser + tf measurements
+3) Drive around the field. 
+    - Drive over same places more than once
+    - Drive slow
+4) Build map from rosbag
+    - roscore
+    - rosparam set use_sim_time true
+    - rosrun gmapping slam_gmapping
+    - rosbag play --clock data.bag
+5) Save map
+    - DO NOT STOP GMAPPING
+    - rosrun map_server map_saver
+    - Outputs: map.pgm(map), map.yaml(metadata)
+6) For better maps, change specs
+    - rosparam set /slam_gmapping/angularUpdate 0.1
+    - angularUpdate = how far racecar has to rotate before a new scan is considered for inclusion in map
+
+================ OPEN MAP ON RVIZ =============
+1) Start map server
+    - rosrun map_server map_server map.yaml
+2) Check map is there
+    - rostopic list (see /map, /map_metadata)
+3) Open RViz
+    - rosrun rviz rviz
+4) Add display of type Map
+    - Add button bottom left
+    - Set topic name = /map
+    - Set fixed frame = /map

@@ -1,0 +1,11 @@
+1) Safety controller
+
+2) Make sure safety turns off during overpass (AR_ID = 19)
+
+3) Turn on y_force for pot_field during haripin turn (AR_ID = 18)
+
+4) Test each individual dist_des for each AR_TAG
+
+5) Start off with RollingWeave STATE
+
+6) Decrease x_force during boa basin (AR_ID = 22)

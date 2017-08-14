@@ -1,0 +1,3 @@
+<launch>
+	<node name="ar_control" pkg="team7" type="ar_control.py" output="screen"/>
+</launch>
